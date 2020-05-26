@@ -11,8 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static cz.vse.selenium.churchcrm.testframework.model.ShowEntries.E_100;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DepositTest extends AChurchCrmTest {
 
@@ -36,6 +36,10 @@ public class DepositTest extends AChurchCrmTest {
         LocalDateTime depositDate = LocalDateTime.now().minusDays(3);
         depositListing.addDeposit(uuid.toString(), depositType, depositDate);
 
+        depositListing.getDepositsGrid().changeShowEntriesTo(E_100);
+
+
+
         // Then - Grid should contain row with filled deposit comment, deposit date and deposit type
         HashMap<String, WebElement> firstRowValues = depositListing.getDepositsGrid().search(uuid.toString()).get(0).getValues();
         assertAll(
@@ -43,5 +47,10 @@ public class DepositTest extends AChurchCrmTest {
                 () -> assertEquals(depositDate.format(depositGridFormatter), firstRowValues.get("Deposit Date").getText()),
                 () -> assertEquals(depositType.name(), firstRowValues.get("Deposit Type").getText())
         );
+
+        depositListing.getDepositsGrid().search("").forEach(gridRow -> gridRow.getValues().get("Deposit ID").click());
+        depositListing.deleteSelectedRows();
+
+
     }
 }

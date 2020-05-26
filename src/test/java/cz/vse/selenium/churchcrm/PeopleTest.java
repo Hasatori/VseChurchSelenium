@@ -19,7 +19,7 @@ public class PeopleTest extends AChurchCrmTest {
 
     @Test
     public void addPersonTest_AddNewPersonAndVerifyPersonalInfo() {
-        //Given - User is on the login page and succesfully login
+        //Given - User is on the login page and successfully login
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goTo();
         loginPage.loginWithValidCredentials();
@@ -38,12 +38,12 @@ public class PeopleTest extends AChurchCrmTest {
 
     @Test
     public void addFamilyTest_AddNewFamilyWithoutFamilyName_Incorrect() {
-        // Given
+        // Given - User is on the login page and successfully login
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goTo();
         loginPage.loginWithValidCredentials();
 
-        // When
+        // When - User go through lef menu and choose People, Add New family. Then fill form with new family and add new family member.
         driver.findElement(By.linkText("People")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Add New Family"))).click();
 
@@ -64,23 +64,26 @@ public class PeopleTest extends AChurchCrmTest {
 
         peoplePage.addPersonalInfo(GenderType.Male, "Mr.", firstName, middleName, lastName, "Dis.", "April", 12, 1999, true);
 
-        // Then
+        // Then - Check that new person was added to system
         assertEquals(String.format("%s %s %s", firstName, middleName, uuid.toString()), driver.findElement(By.cssSelector("h3.profile-username")).getText());
 
-        // When
+        // When - User press button Edit and change mail
         peoplePage.editPersonaInfo();
         String email = "example@example.com";
         peoplePage.editPersonaPage(email);
 
+        // Then - Check that mail was changed and is visible on Persona profile
         assertAll(
                 () -> assertEquals(email, driver.findElement(By.cssSelector(".box-primary .fa-envelope ~span a ")).getText()),
                 () -> assertEquals(1, driver.findElements(By.cssSelector(".timeline li > .fa-pencil")).size())
         );
 
+        // When - User search added person by view all persons
         PeopleListingPage peopleListingPage = new PeopleListingPage(driver);
         peopleListingPage.goTo();
         GridRow gridRow = peopleListingPage.getPeoplePageGrid().search(uuid.toString()).get(0);
 
+        //  Then - Added person was found and is checked by persons first name, last name and mail
         assertAll(
                 () -> assertEquals(firstName, gridRow.getValues().get("First Name").getText()),
                 () -> assertEquals(uuid.toString(), gridRow.getValues().get("Last Name").getText()),

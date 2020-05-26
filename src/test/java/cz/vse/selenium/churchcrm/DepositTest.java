@@ -1,9 +1,11 @@
 package cz.vse.selenium.churchcrm;
 
+import cz.vse.selenium.churchcrm.testframework.GridRow;
 import cz.vse.selenium.churchcrm.testframework.model.DepositType;
 import cz.vse.selenium.churchcrm.testframework.page.DepositListing;
 import cz.vse.selenium.churchcrm.testframework.page.LoginPage;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.time.LocalDateTime;
@@ -41,16 +43,25 @@ public class DepositTest extends AChurchCrmTest {
 
 
         // Then - Grid should contain row with filled deposit comment, deposit date and deposit type
-        HashMap<String, WebElement> firstRowValues = depositListing.getDepositsGrid().search(uuid.toString()).get(0).getValues();
+        GridRow firstRow = depositListing.getDepositsGrid().search(uuid.toString()).get(0);
+        HashMap<String, WebElement> firstRowValues = firstRow.getValues();
         assertAll(
                 () -> assertEquals(uuid.toString(), firstRowValues.get("Deposit Comment").getText()),
                 () -> assertEquals(depositDate.format(depositGridFormatter), firstRowValues.get("Deposit Date").getText()),
                 () -> assertEquals(depositType.name(), firstRowValues.get("Deposit Type").getText())
         );
 
+        //When
+        depositListing.goToDetailDeposit(firstRow);
+
+        //Then
+        assertAll(
+                () -> assertEquals(depositDate.format(depositGridFormatter), driver.findElement(By.id("DepositDate")).getText()),
+                () -> assertEquals(uuid.toString(), driver.findElement(By.id("Comment")).getText())
+        );
+
         depositListing.getDepositsGrid().search("").forEach(gridRow -> gridRow.getValues().get("Deposit ID").click());
         depositListing.deleteSelectedRows();
-
 
     }
 }

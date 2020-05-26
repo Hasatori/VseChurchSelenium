@@ -1,9 +1,11 @@
 package cz.vse.selenium.churchcrm.testframework;
 
+import cz.vse.selenium.churchcrm.testframework.model.ShowEntries;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
@@ -14,25 +16,30 @@ import java.util.stream.Collectors;
 public class Grid extends WebPart {
 
     private static final By SEARCH_INPUT_SELECTOR = By.cssSelector(".dataTables_filter input");
-    private static final By GRID_HEAD_SELECTOR = By.cssSelector("thead th");
-    private static final By GRID_ROWS_SELECTOR = By.cssSelector("tbody tr");
-    private static final By GRID_ROW_CELLS_SELECTOR = By.cssSelector("td");
-    private final String cssSelector;
+    private static final By GRID_HEAD_SELECTOR = By.cssSelector("div > table > thead th");
+    private static final By GRID_ROWS_SELECTOR = By.cssSelector("div > table > tbody > tr");
+    private static final By GRID_ROW_CELLS_SELECTOR = By.cssSelector(":scope  > td");
+    private final By gridLayoutSelector, showEntriesSelector;
 
 
-    public Grid(WebDriver driver, String gridLayoutSelector) {
+    public Grid(WebDriver driver, By gridLayoutSelector, By showEntriesSelector) {
         super(driver);
-        this.cssSelector = gridLayoutSelector;
+        this.gridLayoutSelector = gridLayoutSelector;
+        this.showEntriesSelector = showEntriesSelector;
     }
 
     public List<GridRow> search(String query) {
 
-        WebElement gridWrapper = driver.findElement(By.cssSelector(cssSelector));
+        WebElement gridWrapper = driver.findElement(gridLayoutSelector);
         WebElement searchInput = gridWrapper.findElement(SEARCH_INPUT_SELECTOR);
         searchInput.sendKeys(query);
         List<String> header = getHeader(gridWrapper);
         waitForRowToLoad(header, gridWrapper);
         return getRows(header, gridWrapper);
+    }
+
+    public void changeShowEntriesTo(ShowEntries showEntries) {
+        new Select(driver.findElement(showEntriesSelector)).selectByVisibleText(showEntries.getValue().toString());
     }
 
     private void waitForRowToLoad(List<String> header, WebElement gridWrapper) {
@@ -58,11 +65,11 @@ public class Grid extends WebPart {
                 .collect(Collectors.toList());
     }
 
-    private HashMap<String, String> getRowValues(List<String> header, WebElement rowElement) {
-        HashMap<String, String> rowValues = new HashMap<>();
+    private HashMap<String,WebElement> getRowValues(List<String> header, WebElement rowElement) {
+        HashMap<String, WebElement> rowValues = new HashMap<>();
         List<WebElement> cells = rowElement.findElements(GRID_ROW_CELLS_SELECTOR);
         for (int i = 0; i < cells.size(); i++) {
-            rowValues.put(header.get(i), cells.get(i).getText());
+            rowValues.put(header.get(i), cells.get(i));
         }
         return rowValues;
     }

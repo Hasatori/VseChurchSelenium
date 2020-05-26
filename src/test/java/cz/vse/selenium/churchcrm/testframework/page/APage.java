@@ -12,7 +12,7 @@ public abstract class APage extends WebPart {
     public APage(WebDriver driver, String url) {
         super(driver);
         this.url = url;
-        this.wait = new WebDriverWait(driver, 30);
+        this.wait = new WebDriverWait(driver,10);
     }
 
     public void goTo() {

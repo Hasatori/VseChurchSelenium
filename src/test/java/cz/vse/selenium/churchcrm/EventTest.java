@@ -5,9 +5,7 @@ import cz.vse.selenium.churchcrm.testframework.model.EventType;
 import cz.vse.selenium.churchcrm.testframework.page.AddEditChurchEventPage;
 import cz.vse.selenium.churchcrm.testframework.page.ChurchEventsPage;
 import cz.vse.selenium.churchcrm.testframework.page.LoginPage;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import java.time.Month;
 import java.util.UUID;

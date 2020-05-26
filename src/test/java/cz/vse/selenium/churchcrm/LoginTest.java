@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.By;
 
 import java.util.stream.Stream;
 
 import static cz.vse.selenium.churchcrm.testframework.page.LoginPage.VALID_PASSWORD;
 import static cz.vse.selenium.churchcrm.testframework.page.LoginPage.VALID_USERNAME;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginTest extends AChurchCrmTest {
 
@@ -80,6 +80,7 @@ public class LoginTest extends AChurchCrmTest {
                 loginPage::assertLoginFormIsPresent
         );
     }
+
     protected static Stream<Arguments> provideEmptyUsernameAndPasswordCombinations() {
         // Applied black box method decision table for all possible combinations of entries
         return Stream.of(
@@ -101,7 +102,7 @@ public class LoginTest extends AChurchCrmTest {
         loginPage.goToForgotMyPasswod();
 
         // Then - User should be on the change password page
-        assertEquals(new ChangePassword(driver).getUrl(),driver.getCurrentUrl());
+        assertEquals(new ChangePassword(driver).getUrl(), driver.getCurrentUrl());
     }
 
 }

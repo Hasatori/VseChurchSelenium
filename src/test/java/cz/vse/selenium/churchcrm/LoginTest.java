@@ -20,7 +20,6 @@ public class LoginTest extends AChurchCrmTest {
     private static final String INVALID_USERNAME = "INVALID_USERNAME";
     private static final String INVALID_PASSWORD = "INVALID_PASSWORD";
 
-
     @Test
     public void loginTest_CorrectCredentials_ShouldLogin() {
         // Given - User is on the login page
@@ -36,7 +35,6 @@ public class LoginTest extends AChurchCrmTest {
                 () -> assertEquals("ChurchCRM: Welcome to", driver.getTitle()),
                 loginPage::assertLoginFormIsNotPresent
         );
-
     }
 
     @ParameterizedTest
@@ -57,25 +55,12 @@ public class LoginTest extends AChurchCrmTest {
         );
     }
 
-    @Test
-    public void loginTest_IForgotMyPasswordClicked_ShouldBeRedirectedToTheChangePasswordPage() {
-        // Given - User is on the login page
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.goTo();
-
-        // When - User click on I forgot my password
-        loginPage.goToForgotMyPasswod();
-        // Then - User should be on the change password page
-        assertEquals(new ChangePassword(driver).getUrl(),driver.getCurrentUrl());
-    }
-    
     protected static Stream<Arguments> provideNotEmptyInvalidUsernamePasswordCombinations() {
         return Stream.of(
-                //
+                // Applied black box method decision table for all possible combinations of entries
                 Arguments.of(INVALID_USERNAME, VALID_PASSWORD),
                 Arguments.of(VALID_USERNAME, INVALID_PASSWORD),
                 Arguments.of(INVALID_USERNAME, INVALID_PASSWORD)
-
         );
     }
 
@@ -93,20 +78,30 @@ public class LoginTest extends AChurchCrmTest {
         assertAll(
                 () -> assertEquals(loginPage.getUrl(), driver.getCurrentUrl()),
                 loginPage::assertLoginFormIsPresent
-
         );
     }
-
     protected static Stream<Arguments> provideEmptyUsernameAndPasswordCombinations() {
-        // Applied black box method decision table for all possible combinations
+        // Applied black box method decision table for all possible combinations of entries
         return Stream.of(
                 Arguments.of("", VALID_PASSWORD),
                 Arguments.of(VALID_USERNAME, ""),
                 Arguments.of("", ""),
                 Arguments.of("INVALID_USERNAME", ""),
                 Arguments.of("", "INVALID_PASSWORD")
-
         );
+    }
+
+    @Test
+    public void loginTest_IForgotMyPasswordClicked_ShouldBeRedirectedToTheChangePasswordPage() {
+        // Given - User is on the login page
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.goTo();
+
+        // When - User click on I forgot my password
+        loginPage.goToForgotMyPasswod();
+
+        // Then - User should be on the change password page
+        assertEquals(new ChangePassword(driver).getUrl(),driver.getCurrentUrl());
     }
 
 }

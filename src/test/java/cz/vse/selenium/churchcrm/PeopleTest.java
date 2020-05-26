@@ -1,8 +1,10 @@
 package cz.vse.selenium.churchcrm;
 
+import cz.vse.selenium.churchcrm.testframework.GridRow;
 import cz.vse.selenium.churchcrm.testframework.model.GenderType;
 import cz.vse.selenium.churchcrm.testframework.page.FamilyPage;
 import cz.vse.selenium.churchcrm.testframework.page.LoginPage;
+import cz.vse.selenium.churchcrm.testframework.page.PeopleListingPage;
 import cz.vse.selenium.churchcrm.testframework.page.PeoplePage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -16,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PeopleTest extends AChurchCrmTest {
 
     @Test
-    public void addPersonTest_AddNewPersonAndVerifyPersonalInfo(){
+    public void addPersonTest_AddNewPersonAndVerifyPersonalInfo() {
         //Given - User is on the login page and succesfully login
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goTo();
@@ -29,14 +31,13 @@ public class PeopleTest extends AChurchCrmTest {
         PeoplePage peoplePage = new PeoplePage(driver);
         peoplePage.goTo();
         peoplePage.addPersonalInfo(GenderType.Male, "Mr.", "George", "Dave", "", "Dis.", "April", 12, 1999, true);
-        peoplePage.savePersonalInfo();
 
         //Then - New Person is not save and user see error message on page Person Editor
         assertTrue(driver.findElement(By.cssSelector(".alert-danger")).getText().contains("Invalid fields or selections. Changes not saved! Please correct and try again!"));
     }
 
     @Test
-    public void addFamilyTest_AddNewFamilyWithoutFamilyName_Incorrect(){
+    public void addFamilyTest_AddNewFamilyWithoutFamilyName_Incorrect() {
         // Given
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goTo();
@@ -50,31 +51,40 @@ public class PeopleTest extends AChurchCrmTest {
         familyPage.goTo();
         UUID uuid = UUID.randomUUID();
 
-        familyPage.addFamilyInfo(uuid.toString(),"Old town square", "Rimmer", "Prague", "110 00", "Alabama", "Belize", 30, 30);
+        String country = "Belize";
+        familyPage.addFamilyInfo(uuid.toString(), "Old town square", "Rimmer", "Prague", "110 00", "Alabama", country, 30, 30);
         familyPage.saveFamilyInfo();
         familyPage.addNewFamilyMember();
 
-        PeoplePage peoplePage = new PeoplePage(driver);
-        peoplePage.addPersonalInfo(GenderType.Male, "Mr.", "George", "Dave", "", "Dis.", "April", 12, 1999, true);
-        peoplePage.savePersonalInfo();
 
+        PeoplePage peoplePage = new PeoplePage(driver);
+        String firstName = "George";
+        String middleName = "Dave";
+        String lastName = "";
+
+        peoplePage.addPersonalInfo(GenderType.Male, "Mr.", firstName, middleName, lastName, "Dis.", "April", 12, 1999, true);
 
         // Then
-        /*assertAll(
-                () -> assertEquals(By.tagName("h1"))
-                () -> assertEquals(loginPage.getUrl(), driver.getCurrentUrl()),
-        );*/
+        assertEquals(String.format("%s %s %s", firstName, middleName, uuid.toString()), driver.findElement(By.cssSelector("h3.profile-username")).getText());
 
         // When
         peoplePage.editPersonaInfo();
-        peoplePage.editPersonaPage("example@example.com");
-        peoplePage.savePersonalInfo();
+        String email = "example@example.com";
+        peoplePage.editPersonaPage(email);
 
-        // Then
-        // Assert - ověřit mail, ověřit timeline
+        assertAll(
+                () -> assertEquals(email, driver.findElement(By.cssSelector(".box-primary .fa-envelope ~span a ")).getText()),
+                () -> assertEquals(1, driver.findElements(By.cssSelector(".timeline li > .fa-pencil")).size())
+        );
 
-        // When
-        driver.findElement(By.linkText("People")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("View All Persons"))).click();
+        PeopleListingPage peopleListingPage = new PeopleListingPage(driver);
+        peopleListingPage.goTo();
+        GridRow gridRow = peopleListingPage.getPeoplePageGrid().search(uuid.toString()).get(0);
+
+        assertAll(
+                () -> assertEquals(firstName, gridRow.getValues().get("First Name").getText()),
+                () -> assertEquals(uuid.toString(), gridRow.getValues().get("Last Name").getText()),
+                () -> assertEquals(email, gridRow.getValues().get("Email").getText())
+        );
     }
 }

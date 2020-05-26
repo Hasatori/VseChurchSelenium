@@ -38,6 +38,12 @@ public class LoginPage extends APage {
         assertTrue(this.wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("#Login .alert"), "Invalid login or password")));
     }
 
+    public void assertLoginFormIsPresent() {
+        assertFalse(driver.findElements(By.id("Login")).isEmpty());
+    }
+    public void assertLoginFormIsNotPresent() {
+        assertTrue(driver.findElements(By.id("Login")).isEmpty());
+    }
 }
 
 

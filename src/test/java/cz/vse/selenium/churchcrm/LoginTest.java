@@ -34,7 +34,7 @@ public class LoginTest extends AChurchCrmTest {
         assertAll(
                 () -> assertEquals(new Dashboard(driver).getUrl(), driver.getCurrentUrl()),
                 () -> assertEquals("ChurchCRM: Welcome to", driver.getTitle()),
-                () -> assertTrue(driver.findElements(By.id("Login")).isEmpty())
+                loginPage::assertLoginFormIsNotPresent
         );
 
     }
@@ -52,7 +52,7 @@ public class LoginTest extends AChurchCrmTest {
         // Then - Login error message should be shown, current url is not dashboard and login form is present
         assertAll(
                 () -> assertEquals(loginPage.getUrl(), driver.getCurrentUrl()),
-                () -> assertFalse(driver.findElements(By.id("Login")).isEmpty()),
+                loginPage::assertLoginFormIsPresent,
                 loginPage::assertLoginErrorMessageIsShown
         );
     }

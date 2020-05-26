@@ -76,6 +76,6 @@ public class PeopleTest extends AChurchCrmTest {
 
         // When
         driver.findElement(By.linkText("People")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("View All Family"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("View All Persons"))).click();
     }
 }

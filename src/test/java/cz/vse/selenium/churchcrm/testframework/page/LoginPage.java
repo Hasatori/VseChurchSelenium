@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginPage extends APage {
@@ -23,6 +24,10 @@ public class LoginPage extends APage {
                 .sendKeys(password);
         driver.findElement(By.cssSelector(".btn-primary"))
                 .click();
+    }
+
+    public void goToForgotMyPasswod(){
+        driver.findElement(By.cssSelector(".text-right > a:nth-child(1)")).click();
     }
 
     public void loginWithValidCredentials() {

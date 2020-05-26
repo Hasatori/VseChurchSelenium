@@ -42,7 +42,7 @@ public class DepositListing extends APage {
 
     public void deleteSelectedRows(){
         driver.findElement(By.cssSelector("#deleteSelectedRows")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.className("bootbox-accept"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".modal-dialog .bootbox-accept"))).click();
     }
 
     public void goToDetailDeposit(GridRow gridRow){

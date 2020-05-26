@@ -11,8 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PeopleTest extends AChurchCrmTest {
 
@@ -33,7 +32,7 @@ public class PeopleTest extends AChurchCrmTest {
         peoplePage.savePersonalInfo();
 
         //Then - New Person is not save and user see error message on page Person Editor
-        //assertEquals(driver.findElement(By.tagName("font"));
+        assertTrue(driver.findElement(By.cssSelector(".alert-danger")).getText().contains("Invalid fields or selections. Changes not saved! Please correct and try again!"));
     }
 
     @Test

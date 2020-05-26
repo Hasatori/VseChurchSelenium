@@ -50,10 +50,6 @@ public class PeoplePage extends APage {
     public void editPersonaPage(String mail) {
         driver.findElement(By.name("Email")).sendKeys(mail);
     }
-
-//    public void getFontColor(WebElement element){
-//        return element.getCssValue("red");
-//    }
 }
 
 

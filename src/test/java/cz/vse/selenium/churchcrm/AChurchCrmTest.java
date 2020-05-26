@@ -19,9 +19,10 @@ public abstract class AChurchCrmTest {
     @BeforeEach
     public void beforeEach() {
         this.driver = new ChromeDriver();
+        this.driver.manage().window().maximize();
         this.wait = new WebDriverWait(driver, 30);
     }
-
+    
     @AfterEach
     public void afterEach() {
         driver.quit();

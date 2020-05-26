@@ -1,5 +1,6 @@
 package cz.vse.selenium.churchcrm;
 
+import cz.vse.selenium.churchcrm.testframework.page.ChangePassword;
 import cz.vse.selenium.churchcrm.testframework.page.Dashboard;
 import cz.vse.selenium.churchcrm.testframework.page.LoginPage;
 import org.junit.jupiter.api.Test;
@@ -56,6 +57,20 @@ public class LoginTest extends AChurchCrmTest {
         );
     }
 
+    @Test
+    public void loginTest_IForgotMyPasswordClicked_ShouldBeRedirectedToTheChangePasswordPage() {
+        // Given - User is on the login page
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.goTo();
+
+        // When - User click on I forgot my password
+        loginPage.goToForgotMyPasswod();
+        // Then - User should be on the change password page
+        assertAll(
+                () -> assertEquals(new ChangePassword(driver).getUrl(),driver.getCurrentUrl())
+        );
+    }
+    
     protected static Stream<Arguments> provideNotEmptyInvalidUsernamePasswordCombinations() {
         return Stream.of(
                 Arguments.of(INVALID_USERNAME, VALID_PASSWORD),

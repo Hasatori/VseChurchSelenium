@@ -8,11 +8,8 @@ import cz.vse.selenium.churchcrm.testframework.page.PeopleListingPage;
 import cz.vse.selenium.churchcrm.testframework.page.PeoplePage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.UUID;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PeopleTest extends AChurchCrmTest {

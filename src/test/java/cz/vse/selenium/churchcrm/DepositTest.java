@@ -5,12 +5,10 @@ import cz.vse.selenium.churchcrm.testframework.page.DepositListing;
 import cz.vse.selenium.churchcrm.testframework.page.LoginPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.UUID;
-
 import static cz.vse.selenium.churchcrm.testframework.model.ShowEntries.E_100;
 import static org.junit.jupiter.api.Assertions.*;
 

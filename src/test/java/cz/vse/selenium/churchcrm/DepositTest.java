@@ -4,6 +4,7 @@ import cz.vse.selenium.churchcrm.testframework.model.DepositType;
 import cz.vse.selenium.churchcrm.testframework.page.DepositListing;
 import cz.vse.selenium.churchcrm.testframework.page.LoginPage;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebElement;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,11 +37,11 @@ public class DepositTest extends AChurchCrmTest {
         depositListing.addDeposit(uuid.toString(), depositType, depositDate);
 
         // Then - Grid should contain row with filled deposit comment, deposit date and deposit type
-        HashMap<String, String> firstRowValues = depositListing.getDepositsGrid().search(uuid.toString()).get(0).getValues();
+        HashMap<String, WebElement> firstRowValues = depositListing.getDepositsGrid().search(uuid.toString()).get(0).getValues();
         assertAll(
-                () -> assertEquals(uuid.toString(), firstRowValues.get("Deposit Comment")),
-                () -> assertEquals(depositDate.format(depositGridFormatter), firstRowValues.get("Deposit Date")),
-                () -> assertEquals(depositType.name(), firstRowValues.get("Deposit Type"))
+                () -> assertEquals(uuid.toString(), firstRowValues.get("Deposit Comment").getText()),
+                () -> assertEquals(depositDate.format(depositGridFormatter), firstRowValues.get("Deposit Date").getText()),
+                () -> assertEquals(depositType.name(), firstRowValues.get("Deposit Type").getText())
         );
     }
 }

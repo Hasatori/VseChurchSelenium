@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2c8372e-3dd9-466c-a2ef-781a3169f820" name="Default Changelist" comment="" />
+    <list default="true" id="b2c8372e-3dd9-466c-a2ef-781a3169f820" name="Default Changelist" comment="Next improvements" />
+    <list id="f74bf853-3e40-4f81-a054-469ae4fec008" name="Tonda Assert method for form presence added  Login test for empty username or password added" comment="">
+      <change beforePath="$PROJECT_DIR$/src/test/java/cz/vse/selenium/churchcrm/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cz/vse/selenium/churchcrm/LoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cz/vse/selenium/churchcrm/testframework/page/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cz/vse/selenium/churchcrm/testframework/page/LoginPage.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +40,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Tonda_Assert_method_for_form_presence_added__Login_test_for_empty_username_or_password_added_.patch" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -25,17 +49,57 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b2c8372e-3dd9-466c-a2ef-781a3169f820" name="Default Changelist" comment="" />
+      <changelist id="f74bf853-3e40-4f81-a054-469ae4fec008" name="Tonda Assert method for form presence added  Login test for empty username or password added" comment="" />
       <created>1590473405528</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590473405528</updated>
     </task>
+    <task id="LOCAL-00001" summary="Next improvements">
+      <created>1590474354059</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590474354059</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Next improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Next improvements" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1590473417767">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1590474413576">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590473417767" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590474413576" />
+    <state x="183" y="91" key="MergeDialog" timestamp="1590474570840">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="183" y="91" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590474570840" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590474357408">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590474357408" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590474389334">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590474389334" />
+    <state x="611" y="221" key="vcs.ApplyPatchDifferentiatedDialog" timestamp="1590474415780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="611" y="221" key="vcs.ApplyPatchDifferentiatedDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590474415780" />
   </component>
 </project>

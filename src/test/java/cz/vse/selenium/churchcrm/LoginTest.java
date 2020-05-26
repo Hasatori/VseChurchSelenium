@@ -78,4 +78,31 @@ public class LoginTest extends AChurchCrmTest {
                 Arguments.of(INVALID_USERNAME, INVALID_PASSWORD)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource(value = "provideEmptyUsernameAndPasswordCombinations")
+    public void loginTest_UserNameOrPasswordNotFillByUser_ShouldNotLogIn(String username, String password) {
+        //Given - User is on the login page
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.goTo();
+
+        //When - Username is not fill by user
+        loginPage.login(username, password);
+
+        //Then - User is still on login page and login form is present
+        assertAll(
+                () -> assertEquals(loginPage.getUrl(), driver.getCurrentUrl()),
+                loginPage::assertLoginFormIsPresent
+
+        );
+    }
+
+    protected static Stream<Arguments> provideEmptyUsernameAndPasswordCombinations() {
+        return Stream.of(
+                Arguments.of("", VALID_PASSWORD),
+                Arguments.of(VALID_USERNAME, ""),
+                Arguments.of("", "")
+        );
+    }
+
 }

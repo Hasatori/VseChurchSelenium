@@ -12,15 +12,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EventTest extends AChurchCrmTest {
 
-
     @Test
     public void eventTest_userAddEventAndGoesToEdit_EventShouldBeAddedAndShouldContainCorrectValues() throws InterruptedException {
+        // Given - User is logged in and is on event page
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goTo();
         loginPage.loginWithValidCredentials();
         AddEditChurchEventPage addEditChurchEventPage = new AddEditChurchEventPage(driver);
         addEditChurchEventPage.goTo();
 
+        // When - User fills page and made new event
         EventType eventType = EventType.Church_Service;
         UUID eventTitle = UUID.randomUUID();
         String eventDescription = "Event description";
@@ -31,12 +32,15 @@ public class EventTest extends AChurchCrmTest {
         Boolean active = false;
         addEditChurchEventPage.createNewEvent(eventType, eventTitle.toString(), eventDescription, from, eventSermon, active);
         ChurchEventsPage churchEventsPage = new ChurchEventsPage(driver);
-        GridRow firstRowValues = churchEventsPage.getChurchEventsGrid(eventType, year, month).search(eventTitle.toString()).get(0);
 
+        // Then - Check event was made by check URL address
         assertEquals(new ChurchEventsPage(driver).getUrl(), driver.getCurrentUrl());
 
+        // When - User search event that was made
+        GridRow firstRowValues = churchEventsPage.getChurchEventsGrid(eventType, year, month).search(eventTitle.toString()).get(0);
         churchEventsPage.goToEdit(firstRowValues);
 
+        // Then - Event check by eventType etc. as asserts
         assertAll(
                 () -> assertSame(eventType, addEditChurchEventPage.getEventType()),
                 () -> assertEquals(eventTitle.toString(), addEditChurchEventPage.getEventTitle()),
@@ -44,6 +48,5 @@ public class EventTest extends AChurchCrmTest {
                 () -> assertEquals(eventSermon, addEditChurchEventPage.getEventSermon()),
                 () -> assertEquals(active, addEditChurchEventPage.getEventStatus())
         );
-
     }
 }

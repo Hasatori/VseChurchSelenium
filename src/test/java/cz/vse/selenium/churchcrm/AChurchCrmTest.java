@@ -22,11 +22,11 @@ public abstract class AChurchCrmTest {
         this.driver.manage().window().maximize();
         this.wait = new WebDriverWait(driver, 30);
     }
-    
+
     @AfterEach
     public void afterEach() {
 
-        //driver.quit();
+        driver.quit();
     }
 
 

@@ -2,6 +2,7 @@ package cz.vse.selenium.churchcrm.testframework.page;
 
 import cz.vse.selenium.churchcrm.testframework.model.DepositType;
 import cz.vse.selenium.churchcrm.testframework.Grid;
+import cz.vse.selenium.churchcrm.testframework.GridRow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,4 +45,7 @@ public class DepositListing extends APage {
         wait.until(ExpectedConditions.elementToBeClickable(By.className("bootbox-accept"))).click();
     }
 
+    public void goToDetailDeposit(GridRow gridRow){
+        gridRow.getValues().get("Deposit ID").findElement(By.cssSelector(".fa-inverse")).click();
+    }
 }

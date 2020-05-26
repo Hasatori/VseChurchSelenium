@@ -21,14 +21,20 @@ public class AddEditChurchEventPage extends APage {
         super(driver, String.format("%s/EventEditor.php", ROOT_URL));
     }
 
-    public void createNewEvent(EventType eventType, String eventTitle, String eventDesc, Boolean eventStatus) {
+    public void createNewEvent(EventType eventType, String eventTitle, String eventDesc, String from, String eventSermon, Boolean eventStatus) throws InterruptedException {
         new Select(driver.findElement(By.id("event_type_id"))).selectByVisibleText(eventType.getValue1());
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(EVENT_TITLE_SELECTOR));
 
+        WebElement dateRange = driver.findElement(By.name("EventDateRange"));
+        dateRange.clear();
+        dateRange.sendKeys(from);
         WebElement eventTitleElement = driver.findElement(EVENT_TITLE_SELECTOR);
         eventTitleElement.clear();
         eventTitleElement.sendKeys(eventTitle);
         driver.findElement(EVENT_DESC_SELECTOR).sendKeys(eventDesc);
+        driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
+        driver.findElement(By.cssSelector("body")).sendKeys(eventSermon);
+        driver.switchTo().defaultContent();
         List<WebElement> statuses = driver.findElements(EVENT_STATUSES_SELECTOR);
         if (eventStatus) {
             statuses.get(0).click();
@@ -40,6 +46,13 @@ public class AddEditChurchEventPage extends APage {
 
     public EventType getEventType() {
         return EventType.customValueOf(driver.findElement(EVENT_TYPE_SELECTOR).getAttribute("value"));
+    }
+
+    public String getEventSermon() {
+        driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
+        String result = driver.findElement(By.cssSelector("body")).getText();
+        driver.switchTo().defaultContent();
+        return result;
     }
 
     public String getEventTitle() {

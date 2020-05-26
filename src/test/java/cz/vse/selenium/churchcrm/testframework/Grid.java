@@ -32,6 +32,7 @@ public class Grid extends WebPart {
 
         WebElement gridWrapper = driver.findElement(gridLayoutSelector);
         WebElement searchInput = gridWrapper.findElement(SEARCH_INPUT_SELECTOR);
+        searchInput.clear();
         searchInput.sendKeys(query);
         List<String> header = getHeader(gridWrapper);
         waitForRowToLoad(header, gridWrapper);

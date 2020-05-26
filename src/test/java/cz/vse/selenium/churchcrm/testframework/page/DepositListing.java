@@ -5,6 +5,7 @@ import cz.vse.selenium.churchcrm.testframework.Grid;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.LocalDateTime;
@@ -38,7 +39,9 @@ public class DepositListing extends APage {
         return depositsGrid;
     }
 
-//    public void deleteSelectedRows(){
-//        driver.findElement(By.cssSelector())
-//    }
+    public void deleteSelectedRows(){
+        driver.findElement(By.cssSelector("#deleteSelectedRows")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.className("bootbox-accept"))).click();
+    }
+
 }

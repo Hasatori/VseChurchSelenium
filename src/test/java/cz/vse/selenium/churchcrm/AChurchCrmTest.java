@@ -25,7 +25,8 @@ public abstract class AChurchCrmTest {
     
     @AfterEach
     public void afterEach() {
-        driver.quit();
+
+        //driver.quit();
     }
 
 

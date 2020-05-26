@@ -66,9 +66,7 @@ public class LoginTest extends AChurchCrmTest {
         // When - User click on I forgot my password
         loginPage.goToForgotMyPasswod();
         // Then - User should be on the change password page
-        assertAll(
-                () -> assertEquals(new ChangePassword(driver).getUrl(),driver.getCurrentUrl())
-        );
+        assertEquals(new ChangePassword(driver).getUrl(),driver.getCurrentUrl());
     }
     
     protected static Stream<Arguments> provideNotEmptyInvalidUsernamePasswordCombinations() {

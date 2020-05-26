@@ -73,9 +73,11 @@ public class LoginTest extends AChurchCrmTest {
     
     protected static Stream<Arguments> provideNotEmptyInvalidUsernamePasswordCombinations() {
         return Stream.of(
+                //
                 Arguments.of(INVALID_USERNAME, VALID_PASSWORD),
                 Arguments.of(VALID_USERNAME, INVALID_PASSWORD),
                 Arguments.of(INVALID_USERNAME, INVALID_PASSWORD)
+
         );
     }
 
@@ -98,10 +100,14 @@ public class LoginTest extends AChurchCrmTest {
     }
 
     protected static Stream<Arguments> provideEmptyUsernameAndPasswordCombinations() {
+        // Applied black box method decision table for all possible combinations
         return Stream.of(
                 Arguments.of("", VALID_PASSWORD),
                 Arguments.of(VALID_USERNAME, ""),
-                Arguments.of("", "")
+                Arguments.of("", ""),
+                Arguments.of("INVALID_USERNAME", ""),
+                Arguments.of("", "INVALID_PASSWORD")
+
         );
     }
 

@@ -14,13 +14,13 @@ public class DepositListing extends APage {
 
     private static final DateTimeFormatter depositDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final String GRID_LAYOUT_SELECTOR = "#depositsTable_wrapper";
-    private static final String SHOW_ENTRIES_SELECTOR = "#members_length > label > select";
+    private static final String SHOW_ENTRIES_SELECTOR = "depositsTable_length";
     private final Grid depositsGrid;
 
 
     public DepositListing(WebDriver driver) {
         super(driver, String.format("%s/FindDepositSlip.php", ROOT_URL));
-        this.depositsGrid = new Grid(driver, By.cssSelector(GRID_LAYOUT_SELECTOR), By.cssSelector(SHOW_ENTRIES_SELECTOR));
+        this.depositsGrid = new Grid(driver, By.cssSelector(GRID_LAYOUT_SELECTOR), By.name(SHOW_ENTRIES_SELECTOR));
     }
 
 
@@ -37,4 +37,8 @@ public class DepositListing extends APage {
     public Grid getDepositsGrid() {
         return depositsGrid;
     }
+
+//    public void deleteSelectedRows(){
+//        driver.findElement(By.cssSelector())
+//    }
 }

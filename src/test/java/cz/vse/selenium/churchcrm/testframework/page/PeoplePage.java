@@ -45,6 +45,12 @@ public class PeoplePage extends APage {
         driver.findElement(By.cssSelector("#PersonSaveButton")).click();
     }
 
+    public void editPersonaInfo() { driver.findElement(By.id("EditPerson")).click(); }
+
+    public void editPersonaPage(String mail) {
+        driver.findElement(By.name("Email")).sendKeys(mail);
+    }
+
 //    public void getFontColor(WebElement element){
 //        return element.getCssValue("red");
 //    }

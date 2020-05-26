@@ -1,6 +1,7 @@
-package cz.vse.selenium.churchcrm.testframework.page;
+package cz.vse.selenium.churchcrm.testframework.page.EventPage;
 
 import cz.vse.selenium.churchcrm.testframework.model.EventType;
+import cz.vse.selenium.churchcrm.testframework.page.APage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -2,9 +2,9 @@ package cz.vse.selenium.churchcrm;
 
 import cz.vse.selenium.churchcrm.testframework.GridRow;
 import cz.vse.selenium.churchcrm.testframework.model.EventType;
-import cz.vse.selenium.churchcrm.testframework.page.AddEditChurchEventPage;
-import cz.vse.selenium.churchcrm.testframework.page.ChurchEventsPage;
-import cz.vse.selenium.churchcrm.testframework.page.LoginPage;
+import cz.vse.selenium.churchcrm.testframework.page.EventPage.AddEditChurchEventPage;
+import cz.vse.selenium.churchcrm.testframework.page.EventPage.ChurchEventsPage;
+import cz.vse.selenium.churchcrm.testframework.page.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;
 import java.time.Month;
 import java.util.UUID;

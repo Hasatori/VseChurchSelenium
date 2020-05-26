@@ -2,8 +2,8 @@ package cz.vse.selenium.churchcrm;
 
 import cz.vse.selenium.churchcrm.testframework.GridRow;
 import cz.vse.selenium.churchcrm.testframework.model.DepositType;
-import cz.vse.selenium.churchcrm.testframework.page.DepositListing;
-import cz.vse.selenium.churchcrm.testframework.page.LoginPage;
+import cz.vse.selenium.churchcrm.testframework.page.DepositPage.DepositListing;
+import cz.vse.selenium.churchcrm.testframework.page.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

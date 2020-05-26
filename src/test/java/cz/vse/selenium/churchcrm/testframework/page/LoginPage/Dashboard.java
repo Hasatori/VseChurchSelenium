@@ -1,5 +1,6 @@
-package cz.vse.selenium.churchcrm.testframework.page;
+package cz.vse.selenium.churchcrm.testframework.page.LoginPage;
 
+import cz.vse.selenium.churchcrm.testframework.page.APage;
 import org.openqa.selenium.WebDriver;
 
 public class Dashboard extends APage {

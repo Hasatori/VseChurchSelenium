@@ -1,8 +1,9 @@
-package cz.vse.selenium.churchcrm.testframework.page;
+package cz.vse.selenium.churchcrm.testframework.page.PeoplePage;
 
 
 import cz.vse.selenium.churchcrm.testframework.Grid;
 import cz.vse.selenium.churchcrm.testframework.model.GenderType;
+import cz.vse.selenium.churchcrm.testframework.page.APage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

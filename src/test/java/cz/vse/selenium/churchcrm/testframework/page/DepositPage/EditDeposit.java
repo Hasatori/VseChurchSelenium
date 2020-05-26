@@ -1,5 +1,6 @@
-package cz.vse.selenium.churchcrm.testframework.page;
+package cz.vse.selenium.churchcrm.testframework.page.DepositPage;
 
+import cz.vse.selenium.churchcrm.testframework.page.APage;
 import org.openqa.selenium.WebDriver;
 
 public class EditDeposit extends APage {

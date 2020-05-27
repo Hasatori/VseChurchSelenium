@@ -7,10 +7,16 @@ import cz.vse.selenium.churchcrm.testframework.page.loginpage.LoginPage;
 import cz.vse.selenium.churchcrm.testframework.page.peoplepage.PeopleListingPage;
 import cz.vse.selenium.churchcrm.testframework.page.peoplepage.PeoplePage;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
+
+
+
+@Execution(ExecutionMode.CONCURRENT)
 public class PeopleTest extends AChurchCrmTest {
 
     @Test

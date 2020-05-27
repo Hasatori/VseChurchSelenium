@@ -6,10 +6,16 @@ import cz.vse.selenium.churchcrm.testframework.page.eventpage.AddEditChurchEvent
 import cz.vse.selenium.churchcrm.testframework.page.eventpage.ChurchEventsPage;
 import cz.vse.selenium.churchcrm.testframework.page.loginpage.LoginPage;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
+
 import java.time.Month;
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
+
+
+@Execution(ExecutionMode.CONCURRENT)
 public class EventTest extends AChurchCrmTest {
 
     @Test

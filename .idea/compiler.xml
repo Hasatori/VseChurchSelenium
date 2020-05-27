@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Semestralka_Final" />
+        <module name="VseChurchCrmSelenium" />
         <module name="VseChurchSelenium" />
+        <module name="Semestralka_Final" />
       </profile>
     </annotationProcessing>
   </component>

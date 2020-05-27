@@ -6,6 +6,8 @@ import cz.vse.selenium.churchcrm.testframework.page.depositpage.DepositEditingPa
 import cz.vse.selenium.churchcrm.testframework.page.depositpage.DepositListing;
 import cz.vse.selenium.churchcrm.testframework.page.loginpage.LoginPage;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebElement;
 
 import java.time.LocalDateTime;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 import static cz.vse.selenium.churchcrm.testframework.model.ShowEntries.E_100;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Execution(ExecutionMode.CONCURRENT)
 public class DepositTest extends AChurchCrmTest {
 
 

@@ -4,6 +4,8 @@ import cz.vse.selenium.churchcrm.testframework.page.loginpage.ChangePassword;
 import cz.vse.selenium.churchcrm.testframework.page.loginpage.Dashboard;
 import cz.vse.selenium.churchcrm.testframework.page.loginpage.LoginPage;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,6 +15,9 @@ import static cz.vse.selenium.churchcrm.testframework.page.loginpage.LoginPage.V
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+
+@Execution(ExecutionMode.CONCURRENT)
 public class LoginTest extends AChurchCrmTest {
 
     private static final String INVALID_USERNAME = "INVALID_USERNAME";

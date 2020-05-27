@@ -22,11 +22,10 @@ public class DepositTest extends AChurchCrmTest {
 
 
     private static final DateTimeFormatter depositGridFormatter = DateTimeFormatter.ofPattern("MM-dd-yy");
-    private static final DateTimeFormatter depositEditFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final String DEPOSIT_ID_HEADER = "Deposit ID";
 
     @Test
-    public void addDepositTest_CommentTypeAndDateShouldBeFilled_DepositShouldBeInTheGridDetailsShouldBeOkAndDepositsDeletionShouldWork() throws InterruptedException {
+    public void addDepositTest_CommentTypeAndDateShouldBeFilled_DepositShouldBeInTheGridDetailsShouldBeOkAndDepositsDeletionShouldWork()  {
 
         // Given - User is logged in and is on deposit page
         LoginPage loginPage = new LoginPage(driver);

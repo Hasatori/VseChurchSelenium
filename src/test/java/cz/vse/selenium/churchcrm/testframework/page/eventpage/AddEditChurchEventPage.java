@@ -22,7 +22,7 @@ public class AddEditChurchEventPage extends APage {
         super(driver, String.format("%s/EventEditor.php", ROOT_URL));
     }
 
-    public void createNewEvent(EventType eventType, String eventTitle, String eventDesc, String from, String eventSermon, Boolean eventStatus) throws InterruptedException {
+    public void createNewEvent(EventType eventType, String eventTitle, String eventDesc, String from, String eventSermon, Boolean eventStatus) {
         new Select(driver.findElement(By.id("event_type_id"))).selectByVisibleText(eventType.getValue1());
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(EVENT_TITLE_SELECTOR));
 

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class EventTest extends AChurchCrmTest {
 
     @Test
-    public void eventTest_userAddEventAndGoesToEdit_EventShouldBeAddedAndShouldContainCorrectValues() throws InterruptedException {
+    public void eventTest_userAddEventAndGoesToEdit_EventShouldBeAddedAndShouldContainCorrectValues() {
         // Given - User is logged in and is on event page
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goTo();

@@ -1,4 +1,4 @@
-package cz.vse.selenium.churchcrm.testframework.page.DepositPage;
+package cz.vse.selenium.churchcrm.testframework.page.depositPage;
 
 import cz.vse.selenium.churchcrm.testframework.page.APage;
 import org.openqa.selenium.WebDriver;

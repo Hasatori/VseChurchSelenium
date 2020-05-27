@@ -1,19 +1,12 @@
-package cz.vse.selenium.churchcrm.testframework.page.PeoplePage;
+package cz.vse.selenium.churchcrm.testframework.page.peoplePage;
 
 
-import cz.vse.selenium.churchcrm.testframework.Grid;
 import cz.vse.selenium.churchcrm.testframework.model.GenderType;
 import cz.vse.selenium.churchcrm.testframework.page.APage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
-import java.time.Month;
-import java.time.MonthDay;
-import java.time.Year;
-import java.util.Calendar;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

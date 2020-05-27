@@ -1,4 +1,4 @@
-package cz.vse.selenium.churchcrm.testframework.page.EventPage;
+package cz.vse.selenium.churchcrm.testframework.page.eventPage;
 
 import cz.vse.selenium.churchcrm.testframework.Grid;
 import cz.vse.selenium.churchcrm.testframework.GridRow;

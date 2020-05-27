@@ -1,12 +1,10 @@
-package cz.vse.selenium.churchcrm.testframework.page.PeoplePage;
+package cz.vse.selenium.churchcrm.testframework.page.peoplePage;
 
 import cz.vse.selenium.churchcrm.testframework.page.APage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.UUID;
 
 public class FamilyPage extends APage {
 

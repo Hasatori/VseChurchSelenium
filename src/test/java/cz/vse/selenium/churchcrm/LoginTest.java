@@ -1,15 +1,15 @@
 package cz.vse.selenium.churchcrm;
 
-import cz.vse.selenium.churchcrm.testframework.page.LoginPage.ChangePassword;
-import cz.vse.selenium.churchcrm.testframework.page.LoginPage.Dashboard;
-import cz.vse.selenium.churchcrm.testframework.page.LoginPage.LoginPage;
+import cz.vse.selenium.churchcrm.testframework.page.loginPage.ChangePassword;
+import cz.vse.selenium.churchcrm.testframework.page.loginPage.Dashboard;
+import cz.vse.selenium.churchcrm.testframework.page.loginPage.LoginPage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
-import static cz.vse.selenium.churchcrm.testframework.page.LoginPage.LoginPage.VALID_PASSWORD;
-import static cz.vse.selenium.churchcrm.testframework.page.LoginPage.LoginPage.VALID_USERNAME;
+import static cz.vse.selenium.churchcrm.testframework.page.loginPage.LoginPage.VALID_PASSWORD;
+import static cz.vse.selenium.churchcrm.testframework.page.loginPage.LoginPage.VALID_USERNAME;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

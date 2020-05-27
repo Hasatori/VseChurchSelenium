@@ -1,4 +1,4 @@
-package cz.vse.selenium.churchcrm.testframework.page.EventPage;
+package cz.vse.selenium.churchcrm.testframework.page.eventPage;
 
 import cz.vse.selenium.churchcrm.testframework.model.EventType;
 import cz.vse.selenium.churchcrm.testframework.page.APage;

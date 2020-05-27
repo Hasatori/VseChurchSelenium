@@ -1,4 +1,4 @@
-package cz.vse.selenium.churchcrm.testframework.page.PeoplePage;
+package cz.vse.selenium.churchcrm.testframework.page.peoplePage;
 
 import cz.vse.selenium.churchcrm.testframework.Grid;
 import cz.vse.selenium.churchcrm.testframework.page.APage;

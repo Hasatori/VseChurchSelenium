@@ -1,4 +1,4 @@
-package cz.vse.selenium.churchcrm.testframework.page.LoginPage;
+package cz.vse.selenium.churchcrm.testframework.page.loginPage;
 
 
 import cz.vse.selenium.churchcrm.testframework.page.APage;

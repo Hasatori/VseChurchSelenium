@@ -2,10 +2,10 @@ package cz.vse.selenium.churchcrm;
 
 import cz.vse.selenium.churchcrm.testframework.GridRow;
 import cz.vse.selenium.churchcrm.testframework.model.GenderType;
-import cz.vse.selenium.churchcrm.testframework.page.PeoplePage.FamilyPage;
-import cz.vse.selenium.churchcrm.testframework.page.LoginPage.LoginPage;
-import cz.vse.selenium.churchcrm.testframework.page.PeoplePage.PeopleListingPage;
-import cz.vse.selenium.churchcrm.testframework.page.PeoplePage.PeoplePage;
+import cz.vse.selenium.churchcrm.testframework.page.peoplePage.FamilyPage;
+import cz.vse.selenium.churchcrm.testframework.page.loginPage.LoginPage;
+import cz.vse.selenium.churchcrm.testframework.page.peoplePage.PeopleListingPage;
+import cz.vse.selenium.churchcrm.testframework.page.peoplePage.PeoplePage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;

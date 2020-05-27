@@ -32,7 +32,9 @@ public class DepositListing extends APage {
         webElement.click();
         webElement.clear();
         webElement.sendKeys(depositDate.format(depositDateFormatter));
-        driver.findElement(By.id("depositComment")).sendKeys(depositComment);
+        WebElement commentElement = driver.findElement(By.id("depositComment"));
+        commentElement.clear();
+        commentElement.sendKeys(depositComment);
         new Select(driver.findElement(By.id("depositType"))).selectByVisibleText(depositType.name());
         driver.findElement(By.id("addNewDeposit")).click();
     }
@@ -41,12 +43,17 @@ public class DepositListing extends APage {
         return depositsGrid;
     }
 
-    public void deleteSelectedRows(){
+    public void deleteSelectedRows() {
         driver.findElement(By.cssSelector("#deleteSelectedRows")).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".modal-dialog .bootbox-accept"))).click();
+        String modalSelector=".modal-dialog";
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(String.format("%s .bootbox-accept",modalSelector)))).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(modalSelector)));
     }
 
-    public void goToDetailDeposit(GridRow gridRow){
-        gridRow.getValues().get("Deposit ID").findElement(By.cssSelector(".fa-inverse")).click();
+    public DepositEditingPage goToDepositDetailFromGridRow(GridRow gridRow) {
+        WebElement depositIdCell = gridRow.getValues().get("Deposit ID");
+        Integer id = Integer.valueOf(depositIdCell.getText());
+        depositIdCell.findElement(By.cssSelector(".fa-inverse")).click();
+        return new DepositEditingPage(driver, id);
     }
 }

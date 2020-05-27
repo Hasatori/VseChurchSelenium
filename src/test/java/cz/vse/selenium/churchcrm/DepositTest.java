@@ -2,11 +2,13 @@ package cz.vse.selenium.churchcrm;
 
 import cz.vse.selenium.churchcrm.testframework.GridRow;
 import cz.vse.selenium.churchcrm.testframework.model.DepositType;
+import cz.vse.selenium.churchcrm.testframework.page.depositPage.DepositEditingPage;
 import cz.vse.selenium.churchcrm.testframework.page.depositPage.DepositListing;
 import cz.vse.selenium.churchcrm.testframework.page.loginPage.LoginPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -51,12 +53,12 @@ public class DepositTest extends AChurchCrmTest {
         );
 
         //When Users goes to deposit detail
-        depositListing.goToDetailDeposit(firstRow);
+        DepositEditingPage depositEditingPage = depositListing.goToDepositDetailFromGridRow(firstRow);
 
         //Then Deposit detail should contain correct deposit date and deposit comment
         assertAll(
-                () -> assertEquals(depositDate.format(depositEditFormatter), driver.findElement(By.id("DepositDate")).getAttribute("value")),
-                () -> assertEquals(uuid.toString(), driver.findElement(By.id("Comment")).getAttribute("value"))
+                () -> depositEditingPage.assertDepositDateValue(depositDate),
+                () -> depositEditingPage.assertCommentValue(uuid.toString())
         );
 
         //When User goes back to deposit listing sets show entries to 100, selects all rows and deletes them

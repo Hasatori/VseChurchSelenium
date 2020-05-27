@@ -35,14 +35,12 @@ public class LoginPage extends APage {
         login(VALID_USERNAME, VALID_PASSWORD);
     }
 
-
     public void assertLoginErrorMessageIsShown() {
         assertTrue(this.wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("#Login .alert"), "Invalid login or password")));
     }
 
-    public void assertLoginFormIsPresent() {
-        assertFalse(driver.findElements(By.id("Login")).isEmpty());
-    }
+    public void assertLoginFormIsPresent() { assertFalse(driver.findElements(By.id("Login")).isEmpty()); }
+
     public void assertLoginFormIsNotPresent() {
         assertTrue(driver.findElements(By.id("Login")).isEmpty());
     }

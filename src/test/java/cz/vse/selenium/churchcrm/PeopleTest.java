@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PeopleTest extends AChurchCrmTest {
 
     @Test
-    public void addPersonTest_AddNewPersonAndVerifyPersonalInfo() {
+    public void addPersonTest_shouldNotAddNewPersonAndVerifyPersonalInfo_errorMessageShouldBeShown() {
         //Given - User is on the login page and successfully login
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goTo();
@@ -33,7 +33,7 @@ public class PeopleTest extends AChurchCrmTest {
     }
 
     @Test
-    public void addFamilyTest_AddNewFamilyWithoutFamilyName_Incorrect() {
+    public void familyTest_E2E() {
         // Given - User is on the login page and successfully login
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goTo();

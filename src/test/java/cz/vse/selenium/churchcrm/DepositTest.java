@@ -2,11 +2,10 @@ package cz.vse.selenium.churchcrm;
 
 import cz.vse.selenium.churchcrm.testframework.GridRow;
 import cz.vse.selenium.churchcrm.testframework.model.DepositType;
-import cz.vse.selenium.churchcrm.testframework.page.depositPage.DepositEditingPage;
-import cz.vse.selenium.churchcrm.testframework.page.depositPage.DepositListing;
-import cz.vse.selenium.churchcrm.testframework.page.loginPage.LoginPage;
+import cz.vse.selenium.churchcrm.testframework.page.depositpage.DepositEditingPage;
+import cz.vse.selenium.churchcrm.testframework.page.depositpage.DepositListing;
+import cz.vse.selenium.churchcrm.testframework.page.loginpage.LoginPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.time.LocalDateTime;

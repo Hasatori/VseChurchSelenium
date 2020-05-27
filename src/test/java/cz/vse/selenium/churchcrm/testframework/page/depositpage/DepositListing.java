@@ -1,4 +1,4 @@
-package cz.vse.selenium.churchcrm.testframework.page.depositPage;
+package cz.vse.selenium.churchcrm.testframework.page.depositpage;
 
 import cz.vse.selenium.churchcrm.testframework.model.DepositType;
 import cz.vse.selenium.churchcrm.testframework.Grid;

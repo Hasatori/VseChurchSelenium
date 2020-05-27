@@ -1,4 +1,4 @@
-package cz.vse.selenium.churchcrm.testframework.page.peoplePage;
+package cz.vse.selenium.churchcrm.testframework.page.peoplepage;
 
 
 import cz.vse.selenium.churchcrm.testframework.model.GenderType;
@@ -8,14 +8,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class EditPersonPage extends APage {
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class PeoplePage extends APage {
 
 
-    public EditPersonPage(WebDriver driver) {
+
+    public PeoplePage(WebDriver driver) {
         super(driver, String.format("%s/PersonEditor.php", ROOT_URL));
+
     }
 
-    public void addPersonalInfo(GenderType genderType, String title, String firstName, String middleName, String lastName, String suffix, String birthMonth, Integer birthDay, Integer birthYear, Boolean hideAge){
+    public void addPersonalInfo(GenderType genderType, String title, String firstName, String middleName, String lastName, String suffix, String birthMonth, Integer birthDay, Integer birthYear, Boolean hideAge) {
 
         new Select(driver.findElement(By.name("Gender"))).selectByVisibleText(genderType.name());
         driver.findElement(By.cssSelector("#Title")).sendKeys(title);
@@ -28,22 +33,23 @@ public class EditPersonPage extends APage {
         WebElement birthYearElement = driver.findElement(By.name("BirthYear"));
         birthYearElement.clear();
         birthYearElement.sendKeys(birthYear.toString());
-        if(hideAge){
+        if (hideAge) {
             driver.findElement(By.name("HideAge")).click();
         }
         driver.findElement(By.cssSelector("#PersonSaveButton")).click();
     }
 
 
-    public void editPersonaInfo() { driver.findElement(By.id("EditPerson")).click(); }
+    public void editPersonaInfo() {
+        driver.findElement(By.id("EditPerson")).click();
+    }
+
 
     public void editPersonaPage(String mail) {
         driver.findElement(By.name("Email")).sendKeys(mail);
+        driver.findElement(By.cssSelector("#PersonSaveButton")).click();
     }
 
-//    public void getFontColor(WebElement element){
-//        return element.getCssValue("red");
-//    }
 }
 
 
